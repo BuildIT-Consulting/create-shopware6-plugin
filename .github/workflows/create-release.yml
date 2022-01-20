@@ -47,7 +47,7 @@ jobs:
       - run: npm run build
       - name: Upload
         run: |
-            git add *
+            git add .
             git commit -m "AutomatedRelease ${{ env.CURRENTDATE }}"
             git push origin ${{ env.VERSION }}
       - uses: softprops/action-gh-release@v1
