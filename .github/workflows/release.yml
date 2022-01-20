@@ -43,7 +43,10 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ env.VERSION }}        
-      - run: npm ci
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
