@@ -39,12 +39,8 @@ const optionDefinitions = [{
 async function init() {
     try {
         const options = commandLineArgs(optionDefinitions)
-        let targetVersion = options.targetVersion;
-        if (options.targetVersion === 'latest') {
-            targetVersion = await getLatestVersion();
-        }
         console.info(`Creating plugin: ${options.name}`);
-        console.info(`Target version: ${targetVersion}`);
+        console.info(`Target version: ${options.targetVersion}`);
 
         const root = createPluginFolder(options.name)
 
