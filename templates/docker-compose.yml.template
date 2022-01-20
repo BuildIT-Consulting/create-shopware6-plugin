@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  shopware:
+    image: dockware/dev:{{version}}
+    container_name: {{name}}
+    ports:
+      - "80:80"
+      - "3306:3306"
+      - "2211:22"
+      - "8888:8888"
+      - "9999:9999"
+    volumes:
+      - "./src:/var/www/html/custom/plugins/{{name}}"
+    networks:
+      - web
+    environment:
+      - XDEBUG_ENABLED=1
+networks:
+  web:
+    external: false

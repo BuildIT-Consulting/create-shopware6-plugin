@@ -4,11 +4,10 @@
   "description": "Setup Shopware 6 Plugin via cli",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c"
   },
   "bin": {
-    "create-shopware6-plugin": "bin/app.js"
+    "create-shopware6-plugin": "bin/createPlugin.js"
   },
   "repository": {
     "type": "git",
