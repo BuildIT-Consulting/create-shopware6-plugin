@@ -1,0 +1,36 @@
+{
+  "name": "create-shopware6-plugin",
+  "version": "0.0.2",
+  "description": "Setup Shopware 6 Plugin via cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "bin": {
+    "create-shopware6-plugin": "bin/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuildIT-Consulting/shopware6_plugin_boilerplate.git"
+  },
+  "keywords": [
+    "shopware",
+    "shopware6",
+    "plugins",
+    "cli"
+  ],
+  "author": "BuildIT Consulting",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BuildIT-Consulting/shopware6_plugin_boilerplate/issues"
+  },
+  "homepage": "https://github.com/BuildIT-Consulting/shopware6_plugin_boilerplate#readme",
+  "dependencies": {
+    "command-line-args": "^5.2.0"
+  },
+  "devDependencies": {
+    "rollup": "^2.64.0",
+    "rollup-plugin-preserve-shebang": "^1.0.1"
+  }
+}
