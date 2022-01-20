@@ -1,8 +1,8 @@
 {
   "name": "create-shopware6-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Setup Shopware 6 Plugin via cli",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "build": "rollup -c"
   },
