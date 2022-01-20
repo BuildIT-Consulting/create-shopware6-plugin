@@ -12,10 +12,6 @@ const optionDefinitions = [{
         defaultOption: true
     },
     {
-        name: 'version',
-        type: String
-    },
-    {
         name: 'technical',
         alias: 't',
         type: String
