@@ -50,7 +50,7 @@ async function init() {
         fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
         if(options.dockware){
             const dockerTemplate = fs.readFileSync(path.join(cwd, 'templates/docker-compose.yml.template'));
-            fs.writeFileSync(path.join(root, 'src/docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
+            fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
         }
 
         const PluginTemplate = fs.readFileSync(path.join(cwd, 'templates/plugin.php.template'));
