@@ -38,9 +38,10 @@ async function init() {
         console.info(`Creating plugin: ${options.name}`);
         console.info(`Target version: ${options.targetVersion}`);
 
-        const root = createPluginFolder(options.name)
+        const root = createPluginFolder(options.name);
+        const pluginRoot = path.join(__dirname, "../");   
 
-        const composerTemplate = fs.readFileSync(path.join(__dirname, 'templates/composer.json.template'));
+        const composerTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/composer.json.template'));
         const templateVariables = {
             name: options.name,
             name_lower: options.technical ?? options.name.toLowerCase(),
@@ -49,11 +50,11 @@ async function init() {
         }
         fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
         if(options.dockware){
-            const dockerTemplate = fs.readFileSync(path.join(__dirname, 'templates/docker-compose.yml.template'));
+            const dockerTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/docker-compose.yml.template'));
             fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
         }
 
-        const PluginTemplate = fs.readFileSync(path.join(__dirname, 'templates/plugin.php.template'));
+        const PluginTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/plugin.php.template'));
         fs.writeFileSync(path.join(root, `src/src/${options.name}.php`), compileTemplate(PluginTemplate.toString(), templateVariables), { flag: 'a+' });
 
     } catch (e) {
