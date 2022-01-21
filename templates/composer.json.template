@@ -5,13 +5,16 @@
     "license": "proprietary",
     "version": "1.0.0",
     "extra": {
-        "shopware-plugin-class": "{{name}}\\{{name}}"
+        "shopware-plugin-class": "{{name}}\\{{name}}",
+        "label": {
+            "de-DE": "{{name}}",
+            "en-GB": "{{name}}"
+        }
     },
     "require": {
-        "shopware/core": "{{min_version}}"
+        "shopware/core": "^{{min_version}}"
     },
     "require-dev": {
-        "shopware/core": "*",
         "shopware/storefront": "*"
     },
     "autoload": {
