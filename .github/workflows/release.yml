@@ -38,6 +38,7 @@ jobs:
       - name: Upload
         run: |
             git add ./bin/createPlugin.js
+            git commit -m "AutomatedRelease - Upgrade"
             git push origin main
       - uses: softprops/action-gh-release@v1
         with:

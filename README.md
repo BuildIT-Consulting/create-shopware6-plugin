@@ -11,7 +11,7 @@ This small npm package is used to create a new Shopware 6 Plugin
 
   
 
-npx create-shopware-6-plugin --name "PluginName" --technical "plugin_name" --dockware --targetVersion "latest" --minVersion "6.3.5.0"
+    npx create-shopware6-plugin --name "PluginName" --technical "plugin_name" --dockware --targetVersion "latest" --minVersion "6.3.5.0"
 
   
 
@@ -19,7 +19,7 @@ npx create-shopware-6-plugin --name "PluginName" --technical "plugin_name" --doc
 
     --name
 
-Plugin Name: used for BaseClass and FolderName
+Plugin Name: used for BaseClass and folder name
 
     --technical
 
