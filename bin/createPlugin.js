@@ -13,10 +13,6 @@ const optionDefinitions = [{
         defaultOption: true
     },
     {
-        name: 'version',
-        type: String
-    },
-    {
         name: 'technical',
         alias: 't',
         type: String
@@ -40,12 +36,8 @@ const optionDefinitions = [{
 async function init() {
     try {
         const options = commandLineArgs(optionDefinitions);
-        let targetVersion = options.targetVersion;
-        if (options.targetVersion === 'latest') {
-            targetVersion = await getLatestVersion();
-        }
         console.info(`Creating plugin: ${options.name}`);
-        console.info(`Target version: ${targetVersion}`);
+        console.info(`Target version: ${options.targetVersion}`);
 
         const root = createPluginFolder(options.name);
 
@@ -59,7 +51,7 @@ async function init() {
         fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
         if(options.dockware){
             const dockerTemplate = fs.readFileSync(path.join(cwd, 'templates/docker-compose.yml.template'));
-            fs.writeFileSync(path.join(root, 'src/docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
+            fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
         }
 
         const PluginTemplate = fs.readFileSync(path.join(cwd, 'templates/plugin.php.template'));
