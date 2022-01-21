@@ -40,7 +40,7 @@ async function init() {
 
         const root = createPluginFolder(options.name)
 
-        const composerTemplate = fs.readFileSync(path.join(cwd, 'templates/composer.json.template'));
+        const composerTemplate = fs.readFileSync(path.join(__dirname, 'templates/composer.json.template'));
         const templateVariables = {
             name: options.name,
             name_lower: options.technical ?? options.name.toLowerCase(),
@@ -49,11 +49,11 @@ async function init() {
         }
         fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
         if(options.dockware){
-            const dockerTemplate = fs.readFileSync(path.join(cwd, 'templates/docker-compose.yml.template'));
+            const dockerTemplate = fs.readFileSync(path.join(__dirname, 'templates/docker-compose.yml.template'));
             fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
         }
 
-        const PluginTemplate = fs.readFileSync(path.join(cwd, 'templates/plugin.php.template'));
+        const PluginTemplate = fs.readFileSync(path.join(__dirname, 'templates/plugin.php.template'));
         fs.writeFileSync(path.join(root, `src/src/${options.name}.php`), compileTemplate(PluginTemplate.toString(), templateVariables), { flag: 'a+' });
 
     } catch (e) {
