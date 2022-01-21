@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict';
 
 const commandLineArgs = require('command-line-args');
@@ -48,14 +49,20 @@ async function init() {
             min_version: options.minVersion,
             version: options.targetVersion
         };
-        fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
-        if(options.dockware){
+        fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), {
+            flag: 'a+'
+        });
+        if (options.dockware) {
             const dockerTemplate = fs.readFileSync(path.join(cwd, 'templates/docker-compose.yml.template'));
-            fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
+            fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), {
+                flag: 'a+'
+            });
         }
 
         const PluginTemplate = fs.readFileSync(path.join(cwd, 'templates/plugin.php.template'));
-        fs.writeFileSync(path.join(root, `src/src/${options.name}.php`), compileTemplate(PluginTemplate.toString(), templateVariables), { flag: 'a+' });
+        fs.writeFileSync(path.join(root, `src/src/${options.name}.php`), compileTemplate(PluginTemplate.toString(), templateVariables), {
+            flag: 'a+'
+        });
 
     } catch (e) {
         console.error(e.message);
