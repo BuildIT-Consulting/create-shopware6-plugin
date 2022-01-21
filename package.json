@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BuildIT-Consulting/shopware6_plugin_boilerplate.git"
+    "url": "git+https://github.com/BuildIT-Consulting/create-shopware6-plugin.git"
   },
   "keywords": [
     "shopware",
@@ -22,9 +22,9 @@
   "author": "BuildIT Consulting",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BuildIT-Consulting/shopware6_plugin_boilerplate/issues"
+    "url": "https://github.com/BuildIT-Consulting/create-shopware6-plugin/issues"
   },
-  "homepage": "https://github.com/BuildIT-Consulting/shopware6_plugin_boilerplate#readme",
+  "homepage": "https://github.com/BuildIT-Consulting/create-shopware6-plugin#readme",
   "dependencies": {
     "command-line-args": "^5.2.0"
   },
