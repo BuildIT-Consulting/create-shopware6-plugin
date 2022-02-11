@@ -28,7 +28,7 @@ const optionDefinitions = [{
     }, {
         name: "minVersion",
         type: String,
-        defaultValue: "6.3.5.0"
+        defaultValue: "6.4.0.0"
     }
 ]
 
@@ -48,6 +48,7 @@ async function init() {
             min_version: options.minVersion,
             version: options.targetVersion
         }
+
         fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
         if(options.dockware){
             const dockerTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/docker-compose.yml.template'));
