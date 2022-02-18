@@ -8,4 +8,8 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
+    target-branch: "main"
       interval: "daily"
+    allow:
+  # Allow both direct and indirect updates for all packages
+      - dependency-type: "all"
