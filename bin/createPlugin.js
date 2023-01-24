@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 'use strict';
 
 const commandLineArgs = require('command-line-args');
@@ -30,7 +29,7 @@ const optionDefinitions = [{
     }, {
         name: "minVersion",
         type: String,
-        defaultValue: "6.3.5.0"
+        defaultValue: "6.4.0.0"
     }
 ];
 
@@ -41,28 +40,24 @@ async function init() {
         console.info(`Target version: ${options.targetVersion}`);
 
         const root = createPluginFolder(options.name);
+        const pluginRoot = path.join(__dirname, "../");   
 
-        const composerTemplate = fs.readFileSync(path.join(cwd, 'templates/composer.json.template'));
+        const composerTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/composer.json.template'));
         const templateVariables = {
             name: options.name,
             name_lower: options.technical ?? options.name.toLowerCase(),
             min_version: options.minVersion,
             version: options.targetVersion
         };
-        fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), {
-            flag: 'a+'
-        });
-        if (options.dockware) {
-            const dockerTemplate = fs.readFileSync(path.join(cwd, 'templates/docker-compose.yml.template'));
-            fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), {
-                flag: 'a+'
-            });
+
+        fs.writeFileSync(path.join(root, 'src/composer.json'), compileTemplate(composerTemplate.toString(), templateVariables), { flag: 'a+' });
+        if(options.dockware){
+            const dockerTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/docker-compose.yml.template'));
+            fs.writeFileSync(path.join(root, 'docker-compose.yml'), compileTemplate(dockerTemplate.toString(), templateVariables), { flag: 'a+' });
         }
 
-        const PluginTemplate = fs.readFileSync(path.join(cwd, 'templates/plugin.php.template'));
-        fs.writeFileSync(path.join(root, `src/src/${options.name}.php`), compileTemplate(PluginTemplate.toString(), templateVariables), {
-            flag: 'a+'
-        });
+        const PluginTemplate = fs.readFileSync(path.join(pluginRoot, 'templates/plugin.php.template'));
+        fs.writeFileSync(path.join(root, `src/src/${options.name}.php`), compileTemplate(PluginTemplate.toString(), templateVariables), { flag: 'a+' });
 
     } catch (e) {
         console.error(e.message);

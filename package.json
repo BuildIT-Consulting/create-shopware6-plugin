@@ -3,6 +3,7 @@
   "version": "0.1.10",
   "description": "Setup Shopware 6 Plugin via cli",
   "main": "src/app.js",
+  "type": "module",
   "scripts": {
     "build": "rollup -c"
   },
